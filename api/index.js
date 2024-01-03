@@ -6,7 +6,7 @@ const routers = require("./routes");
 
 app.use(bodyParser.json());
 
-app.use("/change_logs", routers.changeLogsRouters);
+// app.use("/change_logs", routers.changeLogsRouters);
 
 app.get("/api/test", (req, res) => {
   res.end("jkljklqw");
