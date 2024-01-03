@@ -20,7 +20,7 @@ app.set("trust proxy", 1);
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: ["https://mycodejourney.vercel.app/", "http://localhost:5173"],
+    origin: ["https://mycodejourney.vercel.app", "http://localhost:5173"],
   })
 );
 
