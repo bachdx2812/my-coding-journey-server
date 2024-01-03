@@ -24,6 +24,7 @@ app.use(
 );
 
 app.use("/change_logs", routers.changeLogsRouters);
+app.use("/roadmaps", routers.roadmapsRouters);
 
 const port = process.env.PORT || "3000";
 
