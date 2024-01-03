@@ -1,5 +1,5 @@
 module.exports = {
-  list: (req, res) => {
+  list: (_, res) => {
     const list = require("../data/change_logs");
 
     res.json(list);
