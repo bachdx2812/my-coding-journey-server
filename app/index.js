@@ -16,6 +16,7 @@ const routers = require("./routes");
 
 // Apply the rate limiting middleware to all requests.
 app.use(limiter);
+app.set("trust proxy", 1);
 app.use(bodyParser.json());
 app.use(
   cors({
