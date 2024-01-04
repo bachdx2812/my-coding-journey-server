@@ -18,5 +18,9 @@
   {
     "title": "`How to` series",
     "done": false
+  },
+  {
+    "title": "Implement `Last Update` function",
+    "done": false
   }
 ]
