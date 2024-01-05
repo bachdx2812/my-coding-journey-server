@@ -1,7 +1,7 @@
-module.exports = {
-  list: (_, res) => {
-    const list = require("../data/roadmaps.json");
+const Roadmap = require("../models/roadmap");
 
-    res.json(list);
+module.exports = {
+  list: async (_, res) => {
+    res.json(await Roadmap.list());
   },
 };
