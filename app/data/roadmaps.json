@@ -21,6 +21,10 @@
   },
   {
     "title": "Implement `Last Update` function",
+    "done": true
+  },
+  {
+    "title": "Implement download output files for RoR Code Generator",
     "done": false
   }
 ]
