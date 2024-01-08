@@ -1,7 +1,7 @@
-module.exports = {
-  list: (_, res) => {
-    const list = require("../data/change_logs");
+const ChangeLog = require("../models/changelog");
 
-    res.json(list);
+module.exports = {
+  list: async (_, res) => {
+    res.json(await ChangeLog.list());
   },
 };
