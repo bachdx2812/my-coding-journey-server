@@ -26,6 +26,7 @@ app.use(
 
 app.use("/change_logs", routers.changeLogsRouters);
 app.use("/roadmaps", routers.roadmapsRouters);
+app.use("/snippet_generator", routers.snippetGeneratorRouters);
 
 const port = process.env.PORT || "3000";
 

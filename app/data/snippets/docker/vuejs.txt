@@ -1,0 +1,30 @@
+# this dockerfile is designed for a node.js application served by nginx, incorporating multi-stage builds to keep the final image size minimal. it also allows for runtime configuration through environment variables.
+
+FROM node:19.6.1-bullseye-slim as builder
+
+WORKDIR /app
+
+COPY ./management .
+
+RUN yarn install \
+  --prefer-offline \
+  --frozen-lockfile \
+  --non-interactive \
+  --production=false
+
+RUN export VITE_APP_API_BASE_URL="%%VITE_APP_API_BASE_URL%%" && \
+    yarn build
+
+
+FROM nginx:1.23-alpine
+
+WORKDIR /srv/www
+
+RUN chmod 777 /srv/www
+COPY ./docker/management/nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/management/entrypoint.sh /app/entrypoint.sh
+COPY --from=builder /app/dist /srv/www/console
+RUN chmod +x /app/entrypoint.sh
+
+STOPSIGNAL SIGQUIT
+ENTRYPOINT [ "/bin/sh", "-c", "/app/entrypoint.sh" ]

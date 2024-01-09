@@ -1,0 +1,5 @@
+# this dockerfile command downloads the wkhtmltopdf package from a specific release on github, installs it using dpkg, and removes the temporary downloaded debian package. the purpose is to add the wkhtmltopdf tool to the docker image, allowing for the generation of pdf files from html and css within the containerized environment.
+
+RUN wget -q -O /tmp/wkhtmltox.deb https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_amd64.deb && \
+    dpkg -i /tmp/wkhtmltox.deb && \
+    rm /tmp/wkhtmltox.deb
