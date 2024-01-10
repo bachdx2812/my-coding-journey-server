@@ -1,6 +1,30 @@
 [
-  "My self made libraries",
-  "My self made tools ( might be useless though... )",
-  "My tricky on Ruby On Rails",
-  "My proundly completed difficult tasks"
+  {
+    "title": "My self made libraries",
+    "done": true
+  },
+  {
+    "title": "My self made tools ( might be useless though... )",
+    "done": true
+  },
+  {
+    "title": "My development tricks",
+    "done": false
+  },
+  {
+    "title": "My proundly completed difficult tasks",
+    "done": false
+  },
+  {
+    "title": "`How to` series",
+    "done": false
+  },
+  {
+    "title": "Implement `Last Update` function",
+    "done": true
+  },
+  {
+    "title": "Implement download output files for RoR Code Generator",
+    "done": true
+  }
 ]
