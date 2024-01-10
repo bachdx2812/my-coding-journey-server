@@ -1,0 +1,5 @@
+# Dockerfile installs the libjemalloc2 library, and then sets the LD_PRELOAD environment variable to preload the libjemalloc.so.2 shared library. This approach aims to optimize memory allocation within the container, potentially improving overall memory management for applications running in the environment.
+RUN apt-get update && \
+    apt-get install -y libjemalloc2 && \
+    rm -rf /var/lib/apt/lists/*
+ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libjemalloc.so.2"

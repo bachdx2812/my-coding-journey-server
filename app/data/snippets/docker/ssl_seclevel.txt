@@ -1,0 +1,4 @@
+# dockerfile: adjusting openssl configuration to resolve ssl_connect error
+# this dockerfile command modifies the openssl configuration by replacing the default security level from 2 to 1. this adjustment aims to address the ssl_connect error with the message "caused by openssl::ssl::sslerror: ssl_connect returned=1 errno=0 state=error: wrong signature type" that may occur during ssl communication.
+# SSL通信でCaused by OpenSSL::SSL::SSLError: SSL_connect returned=1 errno=0 state=error: wrong signature type が出たらOpenSSLの設定を変える
+RUN sed -i 's/DEFAULT@SECLEVEL=2/DEFAULT@SECLEVEL=1/' /etc/ssl/openssl.cnf

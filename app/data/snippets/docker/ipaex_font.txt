@@ -1,0 +1,27 @@
+# Dockerfile sets up a headless X server (Xvfb) with font dependencies, installs additional fonts, and configures the font cache. It is likely intended for use in a containerized environment where graphical rendering is required, such as for running applications that need fonts.
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    xvfb \
+    libfontconfig \
+    libjpeg62-turbo \
+    libxrender1 \
+    fontconfig \
+    libfreetype6 \
+    xfonts-base \
+    xfonts-75dpi && \
+    fc-cache -f && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN echo 'deb http://deb.debian.org/debian bullseye contrib' >> /etc/apt/sources.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends fontconfig ttf-mscorefonts-installer && \
+    fc-cache -f && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY ./docker/font/IPAexfont00401.zip .
+RUN unzip IPAexfont00401.zip && \
+    cp -R IPAexfont00401 /usr/share/fonts/IPA && \
+    rm -rf IPAexfont00401.zip IPAexfont00401 \
+    && fc-cache -f

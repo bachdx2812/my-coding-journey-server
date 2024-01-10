@@ -1,0 +1,9 @@
+# dockerfile installing ruby dependencies and cleaning up build artifacts. this dockerfile copies the gemfile and gemfile.lock into the container, installs the specified version of bundler, configures bundle settings, installs ruby gems, and performs cleanup by removing unnecessary build artifacts, such as gem cache files and compiled object files. this sequence of commands is commonly used to set up and optimize ruby dependencies within a docker container for application deployment.
+COPY ./server/Gemfile ./server/Gemfile.lock ./
+RUN gem install bundler -v "$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)" \
+    && bundle config set without development test \
+    && bundle config set --local path 'vendor/bundle' \
+    && bundle install \
+    && rm -rf $GEM_HOME/cache/*.gem \
+    && find $GEM_HOME/gems/ -name "*.c" -delete \
+    && find $GEM_HOME/gems/ -name "*.o" -delete
