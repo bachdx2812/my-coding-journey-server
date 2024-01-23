@@ -24,9 +24,9 @@ app.use(
   })
 );
 
-app.use("/change_logs", routers.changeLogsRouters);
-app.use("/roadmaps", routers.roadmapsRouters);
-app.use("/snippet_generator", routers.snippetGeneratorRouters);
+app.use("/api/change_logs", routers.changeLogsRouters);
+app.use("/api/roadmaps", routers.roadmapsRouters);
+app.use("/api/snippet_generator", routers.snippetGeneratorRouters);
 
 const port = process.env.PORT || "3000";
 
